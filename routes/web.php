@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Recipe;
 use App\Http\Controllers\TestValues;
 use App\Http\Controllers\RecipeIndex;
+use App\Http\Controllers\RecipeForm;
 use Inertia\Inertia;
 
 /*
@@ -26,16 +27,13 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-/*
-* Inertia routes
-*/
-/*Route::get('/recipes', function () {
-    return Inertia::render('Index/Recipes', [
-        'test' => "yes please"
-    ]);
-}); */
 
 Route::get('/recipes', [ RecipeIndex::class, 'show' ]);
+
+Route::get('/recipes/add', [RecipeForm::class, 'show'])->name('recipe_add');
+
+Route::put('/recipes/add', [RecipeForm::class, 'store']);
+
 
 Route::get('/recipe/{id}', function($id){
     return Inertia::render('SingleRecipe', [
