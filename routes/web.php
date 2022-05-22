@@ -2,7 +2,9 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use App\Models\Recipe;
 use App\Http\Controllers\TestValues;
+use App\Http\Controllers\RecipeIndex;
 use Inertia\Inertia;
 
 /*
@@ -24,8 +26,22 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+/*
+* Inertia routes
+*/
+/*Route::get('/recipes', function () {
+    return Inertia::render('Index/Recipes', [
+        'test' => "yes please"
+    ]);
+}); */
 
-Route::get('/greeting', [ TestValues::class, 'show' ]);
+Route::get('/recipes', [ RecipeIndex::class, 'show' ]);
+
+Route::get('/recipe/{id}', function($id){
+    return Inertia::render('SingleRecipe', [
+        'recipe' => Recipe::find($id),
+    ]);
+} );
 
 Route::middleware([
     'auth:sanctum',
