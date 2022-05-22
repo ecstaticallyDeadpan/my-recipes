@@ -1,7 +1,17 @@
 <script>
+    import { Link } from '@inertiajs/inertia-vue3';
+
     export default{
+        components: {
+            Link
+        },
         props: {
             recipes: Array,
+        },
+        methods:{
+            recipeUrl(id){
+                return "/recipe/" + id
+            }
         }
     }
 </script>
@@ -9,9 +19,9 @@
 <template>
 <!-- This example requires Tailwind CSS v2.0+ -->
   <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <li 
+      <li
         v-for="recipe in recipes"
-        :key="recipe.id" 
+        :key="recipe.id"
         class="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200">
 
           <div class="w-full flex items-center justify-between p-6 space-x-6">
@@ -26,10 +36,10 @@
           <div>
               <div class="-mt-px flex divide-x divide-gray-200">
                   <div class="w-0 flex-1 flex">
-                      <a href="" class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500">
+                      <Link :href="recipeUrl( recipe.id )" class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500">
                           <!-- Heroicon name: solid/mail -->
                           <span class="ml-3">Read Recipe</span>
-                      </a>
+                      </Link>
                   </div>
               </div>
           </div>

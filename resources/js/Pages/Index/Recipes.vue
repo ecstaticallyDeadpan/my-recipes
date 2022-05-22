@@ -23,7 +23,7 @@
         components: {
             Head,
             AppLayout,
-            RecipeGrid,
+            RecipeGrid
         },
         props: {
             recipes: Array
