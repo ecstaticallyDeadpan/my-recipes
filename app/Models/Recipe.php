@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
+    use HasFactory;
+
+    protected $fillable = [
+        'user_id', 'name', 'author', 'description', 'instructions', 'url'
+    ];
+
     /**
      * Get the user that owns the recipe.
      */
