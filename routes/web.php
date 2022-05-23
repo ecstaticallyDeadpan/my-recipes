@@ -28,18 +28,22 @@ Route::get('/', function () {
     ]);
 });
 
+// Recipe index
 Route::get('/recipes', [ RecipeIndex::class, 'show' ]);
 
-Route::get('/recipes/add', [RecipeForm::class, 'show'])->name('recipe_add');
-
+// Form routes
+Route::get('/recipes/add/', [RecipeForm::class, 'show'])->name('recipe_add');
 Route::put('/recipes/add', [RecipeForm::class, 'store']);
+Route::get('/recipes/edit/{id}', [RecipeForm::class, 'show'])->name('recipe_edit');
 
-
+// Single recipe
 Route::get('/recipe/{id}', function($id){
+    $recipe = Recipe::find($id);
     return Inertia::render('SingleRecipe', [
-        'recipe' => Recipe::find($id),
+        'recipe' => $recipe,
+        'canEdit' => ($recipe && $recipe->user_id == auth()->user()->id)
     ]);
-} );
+})->name('recipe_single');;
 
 Route::middleware([
     'auth:sanctum',

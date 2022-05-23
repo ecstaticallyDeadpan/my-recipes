@@ -2,14 +2,17 @@
 <script>
     import { Head } from '@inertiajs/inertia-vue3';
     import AppLayout from '@/Layouts/AppLayout.vue';
+    import Button from '@/Components/Button.vue';
 
     export default{
         components: {
             Head,
-            AppLayout
+            AppLayout,
+            Button
         },
         props: {
-            recipe: Object
+            recipe: Object,
+            canEdit: Boolean
         }
     }
 </script>
@@ -49,7 +52,9 @@
                                 <dt class="text-sm font-medium text-gray-500">Web link</dt>
                                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><a :href='recipe.url'>{{ recipe.url }}</a></dd>
                             </div>
-
+                            <div v-if="canEdit" class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                <Button text="Edit Recipe" :link="'/recipes/edit/' + recipe.id "/>
+                            </div>
                         </dl>
                     </div>
                 </div>

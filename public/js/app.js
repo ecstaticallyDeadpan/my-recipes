@@ -24141,6 +24141,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    recipe: Object
+  },
   setup: function setup() {
     var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.useForm)({
       name: null,
@@ -24148,11 +24151,23 @@ __webpack_require__.r(__webpack_exports__);
       description: null,
       instructions: null,
       url: null,
-      user_id: 1
+      user_id: 1,
+      id: null
     });
     return {
       form: form
     };
+  },
+  mounted: function mounted() {
+    if (this.recipe) {
+      this.form.name = this.recipe.name;
+      this.form.author = this.recipe.author;
+      this.form.description = this.recipe.description;
+      this.form.instructions = this.recipe.instructions;
+      this.form.url = this.recipe.url;
+      this.form.user_id = this.recipe.user_id;
+      this.form.id = this.recipe.id;
+    }
   },
   components: {
     Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.Head,
@@ -24175,15 +24190,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 /* harmony import */ var _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/AppLayout.vue */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Components_Button_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/Button.vue */ "./resources/js/Components/Button.vue");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.Head,
-    AppLayout: _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    AppLayout: _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Button: _Components_Button_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   props: {
-    recipe: Object
+    recipe: Object,
+    canEdit: Boolean
   }
 });
 
@@ -28623,9 +28642,9 @@ var _hoisted_4 = {
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
   "class": "text-lg leading-6 font-medium text-gray-900"
-}, "Profile"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+}, "Recipe details"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "mt-1 max-w-2xl text-sm text-gray-500"
-}, "This information will be displayed publicly so be careful what you share.")], -1
+}, "Please fill in details of your recipe")], -1
 /* HOISTED */
 );
 
@@ -28650,7 +28669,8 @@ var _hoisted_10 = {
   "class": "max-w-lg flex rounded-md shadow-sm"
 };
 var _hoisted_11 = {
-  key: 0
+  key: 0,
+  "class": "text-red-400 text-sm block"
 };
 var _hoisted_12 = {
   "class": "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
@@ -28659,7 +28679,7 @@ var _hoisted_12 = {
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "username",
   "class": "block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-}, "Author of recipe", -1
+}, "Original author", -1
 /* HOISTED */
 );
 
@@ -28670,7 +28690,8 @@ var _hoisted_15 = {
   "class": "max-w-lg flex rounded-md shadow-sm"
 };
 var _hoisted_16 = {
-  key: 0
+  key: 0,
+  "class": "text-red-400 text-sm block"
 };
 var _hoisted_17 = {
   "class": "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
@@ -28679,7 +28700,7 @@ var _hoisted_17 = {
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "username",
   "class": "block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-}, "URL", -1
+}, "Original URL", -1
 /* HOISTED */
 );
 
@@ -28690,7 +28711,8 @@ var _hoisted_20 = {
   "class": "max-w-lg flex rounded-md shadow-sm"
 };
 var _hoisted_21 = {
-  key: 0
+  key: 0,
+  "class": "text-red-400 text-sm block"
 };
 var _hoisted_22 = {
   "class": "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
@@ -28699,7 +28721,7 @@ var _hoisted_22 = {
 var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "description",
   "class": "block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-}, "Description", -1
+}, "Brief Description", -1
 /* HOISTED */
 );
 
@@ -28714,7 +28736,8 @@ var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_26 = {
-  key: 0
+  key: 0,
+  "class": "text-red-400 text-sm block"
 };
 var _hoisted_27 = {
   "class": "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
@@ -28733,12 +28756,13 @@ var _hoisted_29 = {
 
 var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "mt-2 text-sm text-gray-500"
-}, "How do you make the recipe?", -1
+}, "How do you make the recipe? Give step by step instructions", -1
 /* HOISTED */
 );
 
 var _hoisted_31 = {
-  key: 0
+  key: 0,
+  "class": "text-red-400 text-sm block"
 };
 var _hoisted_32 = {
   "class": "pt-5"
@@ -28779,9 +28803,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.name]]), $setup.form.errors.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.name), 1
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.name]])]), $setup.form.errors.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.name), 1
       /* TEXT */
-      )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return $setup.form.author = $event;
         }),
@@ -28791,9 +28815,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.author]]), $setup.form.errors.author ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.author), 1
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.author]])]), $setup.form.errors.author ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.author), 1
       /* TEXT */
-      )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $setup.form.url = $event;
         }),
@@ -28803,9 +28827,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.url]]), $setup.form.errors.url ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.url), 1
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.url]])]), $setup.form.errors.url ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.url), 1
       /* TEXT */
-      )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+      )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
           return $setup.form.description = $event;
         }),
@@ -28829,15 +28853,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* TEXT */
       )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-          return $setup.form.user_id = $event;
+          return $props.recipe.id = $event;
         }),
-        type: "hidden",
-        name: "user_id",
-        autocomplete: "user_id",
-        "class": "flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+        type: "hidden"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.user_id]]), _hoisted_34])])], 32
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.recipe.id]]), _hoisted_34])])], 32
       /* HYDRATE_EVENTS */
       )])])];
     }),
@@ -28948,7 +28969,13 @@ var _hoisted_21 = {
   "class": "mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"
 };
 var _hoisted_22 = ["href"];
+var _hoisted_23 = {
+  key: 0,
+  "class": "bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_Button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Button");
+
   var _component_AppLayout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("AppLayout");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_AppLayout, {
@@ -28974,7 +29001,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         href: $props.recipe.url
       }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.recipe.url), 9
       /* TEXT, PROPS */
-      , _hoisted_22)])])])])])])])];
+      , _hoisted_22)])]), $props.canEdit ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {
+        text: "Edit Recipe",
+        link: '/recipes/edit/' + $props.recipe.id
+      }, null, 8
+      /* PROPS */
+      , ["link"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])])];
     }),
     _: 1
     /* STABLE */
