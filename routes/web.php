@@ -26,7 +26,9 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/', function () {
-        return Inertia::render('Dashboard');
+        return Inertia::render('Dashboard',[
+            'recipes' => Recipe::all()
+        ]);
     })->name('dashboard');
 
     // Recipe index

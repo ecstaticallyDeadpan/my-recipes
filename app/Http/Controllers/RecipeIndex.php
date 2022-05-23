@@ -10,7 +10,7 @@ class RecipeIndex extends Controller
 {
     public function show(){
         return Inertia::render('Index/Recipes', [
-            'recipes' => Recipe::all(),
+            'recipes' => Recipe::where('user_id', auth()->user()->id)->get()
         ]);
     }
 }
