@@ -51,7 +51,13 @@ const logout = () => {
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <JetNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
+                                    Home
+                                </JetNavLink>
+                                <JetNavLink :href="route('recipe_index')" :active="route().current('recipe_index')">
+                                    My recipes
+                                </JetNavLink>
+                                <JetNavLink :href="route('recipe_add')" :active="route().current('recipe_add')">
+                                    Add recipe
                                 </JetNavLink>
                             </div>
                         </div>
