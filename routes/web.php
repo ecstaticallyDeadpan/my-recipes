@@ -6,6 +6,7 @@ use App\Models\Recipe;
 use App\Http\Controllers\TestValues;
 use App\Http\Controllers\RecipeIndex;
 use App\Http\Controllers\RecipeForm;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 /*
@@ -19,38 +20,29 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
-
-// Recipe index
-Route::get('/recipes', [ RecipeIndex::class, 'show' ]);
-
-// Form routes
-Route::get('/recipes/add/', [RecipeForm::class, 'show'])->name('recipe_add');
-Route::put('/recipes/add', [RecipeForm::class, 'store']);
-Route::get('/recipes/edit/{id}', [RecipeForm::class, 'show'])->name('recipe_edit');
-
-// Single recipe
-Route::get('/recipe/{id}', function($id){
-    $recipe = Recipe::find($id);
-    return Inertia::render('SingleRecipe', [
-        'recipe' => $recipe,
-        'canEdit' => ($recipe && $recipe->user_id == auth()->user()->id)
-    ]);
-})->name('recipe_single');;
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
+    Route::get('/', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+    // Recipe index
+    Route::get('/recipes', [RecipeIndex::class, 'show'])->name('recipe_index');
+
+    // Form routes
+    Route::get('/recipes/add/', [RecipeForm::class, 'show'])->name('recipe_add');
+    Route::put('/recipes/add', [RecipeForm::class, 'store']);
+    Route::get('/recipes/edit/{id}', [RecipeForm::class, 'show'])->name('recipe_edit');
+
+    // Single recipe
+    Route::get('/recipe/{id}', function ($id) {
+        $recipe = Recipe::find($id);
+        return Inertia::render('SingleRecipe', [
+            'recipe' => $recipe,
+            'canEdit' => ($recipe && $recipe->user_id == auth()->user()->id)
+        ]);
+    })->name('recipe_single');
 });
