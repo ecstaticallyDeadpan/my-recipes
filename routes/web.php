@@ -3,9 +3,8 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Models\Recipe;
-use App\Http\Controllers\TestValues;
-use App\Http\Controllers\RecipeIndex;
-use App\Http\Controllers\RecipeForm;
+use App\Http\Controllers\RecipeIndexController;
+use App\Http\Controllers\RecipeFormController;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
