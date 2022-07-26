@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Recipe;
 use Inertia\Inertia;
 
-class RecipeForm extends Controller
+class RecipeFormController extends Controller
 {
     public function show($id = false)
     {

@@ -31,12 +31,12 @@ Route::middleware([
     })->name('dashboard');
 
     // Recipe index
-    Route::get('/recipes', [RecipeIndex::class, 'show'])->name('recipe_index');
+    Route::get('/recipes', [RecipeIndexController::class, 'show'])->name('recipe_index');
 
     // Form routes
-    Route::get('/recipes/add/', [RecipeForm::class, 'show'])->name('recipe_add');
-    Route::put('/recipes/add', [RecipeForm::class, 'store']);
-    Route::get('/recipes/edit/{id}', [RecipeForm::class, 'show'])->name('recipe_edit');
+    Route::get('/recipes/add/', [RecipeFormController::class, 'show'])->name('recipe_add');
+    Route::put('/recipes/add', [RecipeFormController::class, 'store']);
+    Route::get('/recipes/edit/{id}', [RecipeFormController::class, 'show'])->name('recipe_edit');
 
     // Single recipe
     Route::get('/recipe/{id}', function ($id) {

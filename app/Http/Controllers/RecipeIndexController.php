@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Recipe;
 use Inertia\Inertia;
 
-class RecipeIndex extends Controller
+class RecipeIndexController extends Controller
 {
     public function show(){
         return Inertia::render('Index/Recipes', [
